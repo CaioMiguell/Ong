@@ -1,0 +1,100 @@
+<%= form_for @vet, :html => { :class => "form-horizontal vet" } do |f| %>
+
+  <% if @vet.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@vet.errors.count, "error") %> prohibited this vet from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @vet.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :fone, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :fone, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:fone) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :crv, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :crv, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:crv) %>
+  </div>
+
+  <%= f.fields_for :address do |address| %>
+    <div class="form-group">
+      <%= address.label :zip_code, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :zip_code, :class => 'form-control', :id => 'inputZipCode', :required => true, :maxlength => '8', onblur: 'changeZipCode(this)', onclick: 'changeZipCode(this)', mouseleave: 'changeZipCode(this)', :autocomplete => "false" %>
+      </div>
+      <%=address.error_span(:zip_code) %>
+     </div>
+    <div class="form-group">
+      <%= address.label :street, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :street, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:street) %>
+    </div>
+    <div class="form-group">
+      <%= address.label :number, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :number, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:number) %>
+    </div>
+    <div class="form-group">
+      <%= address.label :complement, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :complement, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:complement) %>
+    </div>
+    <div class="form-group">
+      <%= address.label :neighborhood, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :neighborhood, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:neighborhood) %>
+    </div>
+    <div class="form-group">
+      <%= address.label :city, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :city, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:city) %>
+    </div>
+    <div class="form-group">
+      <%= address.label :state, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= address.text_field :state, :class => 'form-control' %>
+      </div>
+      <%=address.error_span(:state) %>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                vets_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+<%= render partial: 'form', formats: [:js], locals: {time_now: Time.now} %>

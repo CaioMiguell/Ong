@@ -1,0 +1,187 @@
+pt-BR:
+  date:
+    formats:
+      date: "%d/%m/%Y"
+  activerecord:
+    models:
+      address: Endereço
+      animal: Animal
+      donation: Doações
+      donor_type: Tipos de Doações
+      user: Usuário
+      vet: Veterinário
+      animal_history: Histórico dos Animais
+    attributes:
+      address:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        street: Rua
+        number: Número
+        complement: Complemento
+        neighborhood: Bairro
+        city: Cidade
+        state: Estado
+        zip_code: CEP
+      animal:
+        name: Nome
+        image: Imagem
+        species: Espécie
+        breed: Raça
+        note: Observação
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      donation:
+        person: Pessoa
+        donor_type_id: Tipo de Doação
+        amount: Quantidade
+        animal_id: Animal
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      donor_type:
+        name: Nome
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      user:
+        email: Email
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      animal_history:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        date_ini: Data Inicial
+        animal_id: Animal
+        vet_id: Veterinário
+        note: Observação
+      vet:
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        name: Nome
+        fone: Telefone
+        crv: Crv
+        address_id: Endereço
+        address:
+          created_at: "Criado em"
+          updated_at: "Atualizado em"
+          street: Rua
+          number: Número
+          complement: Complemento
+          neighborhood: Bairro
+          city: Cidade
+          state: Estado
+          zip_code: CEP
+    errors:
+      models:
+        item:
+          attributes:
+            picture:
+              size_too_big: Imagem maior que 15 megas
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      extension_white_list_error: "Você não tem a permissão de fazer upload da extensão %{extension}, somente dos tipos: %{allowed_types}"
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      present: deve ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: 'A validação falhou: %{errors}'
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      required: deve existir
+      taken: já está em uso
+      too_long:
+        one: 'é muito longo (máximo: 1 caracter)'
+        other: 'é muito longo (máximo: %{count} caracteres)'
+      too_short:
+        one: 'é muito curto (mínimo: 1 caracter)'
+        other: 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+      other_than: deve ser diferente de %{count}
+    template:
+      body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: 'Não foi possível gravar %{model}: 1 erro'
+        other: 'Não foi possível gravar %{model}: %{count} erros'
+  messages:
+    create:
+      address: "Endereço criado com sucesso."
+      animal_history: "Histórico do animal criado com sucesso."
+      animal: Animal criado com sucesso.
+      donation: Doação criado com sucesso.
+      donar_type: Tipo de Doação criado com sucesso.
+      user: Usuário criado com sucesso.
+      vet: Veterinário criado com sucesso.
+    update: 
+      address: "Endereço atualizado com sucesso."
+      animal_history: "Histórico do animal atualizado com sucesso."
+      animal: Animal atualizado com sucesso.
+      donation: Doação atualizado com sucesso.
+      donar_type: Tipo de Doação atualizado com sucesso.
+      user: Usuário atualizado com sucesso.
+      vet: Veterinário atualizado com sucesso.
+    delete:
+      address: "Endereço removido com sucesso."
+      animal_history: "Histórico do animal removido com sucesso."
+      animal: Animal removido com sucesso.
+      donation: Doação removido com sucesso.
+      donar_type: Tipo de Doação removido com sucesso.
+      user: Usuário removido com sucesso.
+      vet: Veterinário removido com sucesso.
+  helpers:
+    actions: Ações
+    error: "Erro"
+    titles:
+      edit: Editar
+      new: Novo
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Nenhum %{entry_name} encontrado"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> no total"
+    links:
+      back: "Voltar"
+      destroy: "Deletar"
+      confirm: "Deseja remover?"
+      new: "Novo"
+      edit: "Editar"
+      actions: "Ações"
+      cancel : "Cancelar"
+      save: "Salvar"
+      show: "Visualizar"
+  global:
+    home: "Início"
+    new: "Novo"
+    view: "Visualizar"
+  views:
+    pagination:
+      first: "&laquo; Primeiro"
+      last: "Último &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Próximo &rsaquo;"
+      truncate: "&hellip;"
+  app:
+    name: "Ong"
+  footer: "Desenvolvido por Gatão"
+  time:
+     formats:
+       default: "%d/%m/%Y %H:%M"

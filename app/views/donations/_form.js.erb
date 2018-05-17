@@ -1,0 +1,45 @@
+<% content_for :js do%>
+$(document).ready(function() {
+    $("form[id='new_donation'] , form[id^='edit_donation_']").formValidation({
+        framework: 'bootstrap',
+        fields:{
+            'donation[person]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Pessoa é obrigatório.'
+                    },
+                    stringLength: {
+                        max: 128,
+                        message: 'Pessoa deve conter no máximo 128 caracteres.'
+                    }
+                }
+            },
+            'donation[donor_type_id]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Tipo de doação é obrigatório.'
+                    }
+                }
+            },
+            'donation[amount]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Quantidade é obrigatório.'
+                    },
+                    integer: {
+                        message: 'Quantidade não é um inteiro'
+                    }
+                }
+            },
+            'donation[animal_id]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Animal é obrigatório.'
+                    }
+                }
+            }
+        }
+    });
+
+});
+<% end %>

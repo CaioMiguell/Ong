@@ -1,0 +1,20 @@
+<% content_for :js do%>
+    $(document).ready(function() {
+        $("form[id='new_donor_type'] , form[id^='edit_donor_type_']").formValidation({
+            framework: 'bootstrap',
+            fields:{
+                'donor_type[name]': {
+                    validators: {
+                        notEmpty:{
+                            message: 'Por favor digite um nome.'
+                        },
+                        stringLength: {
+                            max: 68,
+                            message: 'O nome deve conter no máximo 68 caracteres.'
+                        }
+                    }
+                }
+            }
+        });
+    });
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: MyString
+  donorType: one
+  amount: MyString
+  animal: one
+
+two:
+  person: MyString
+  donorType: two
+  amount: MyString
+  animal: two

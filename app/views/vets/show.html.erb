@@ -1,0 +1,38 @@
+<%- model_class = Vet -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @vet.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:fone) %>:</strong></dt>
+  <dd><%= @vet.fone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:crv) %>:</strong></dt>
+  <dd><%= @vet.crv %></dd>
+  <%- model_class = Address -%>
+  <dt><strong><%=  model_class.human_attribute_name(:zip_code) %>:</strong></dt>
+  <dd><%= @vet.address.zip_code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:street) %>:</strong></dt>
+  <dd><%= @vet.address.street %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:number)  %>:</strong></dt>
+  <dd><%= @vet.address.number %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:complement)  %>:</strong></dt>
+  <dd><%= @vet.address.complement %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:neighborhood) %>:</strong></dt>
+  <dd><%= @vet.address.neighborhood %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:city)  %>:</strong></dt>
+  <dd><%= @vet.address.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+  <dd><%= @vet.address.state %></dd> 
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              vets_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_vet_path(@vet), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              vet_path(@vet),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

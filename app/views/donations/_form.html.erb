@@ -1,0 +1,55 @@
+<%= form_for @donation, :html => { :class => "form-horizontal donation" } do |f| %>
+
+  <% if @donation.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @donation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :person, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :person, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:person) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :donor_type_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">    
+      <%= f.select :donor_type_id, @donations_type.collect { |dt| [dt.name, dt.id]}, {include_blank: true}, { class: "form-control" }  %>
+    </div>
+    <%=f.error_span(:donor_type_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amount, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.number_field :amount, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:amount) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :animal_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">    
+      <%= f.select :animal_id, @animales.collect { |an| [an.name, an.id] }, {include_blank: true}, { class: "form-control"  } %>
+    </div>
+    <%=f.error_span(:animal_id) %>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                donations_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
+<%= render partial: 'form', formats: [:js], locals: {time_now: Time.now} %>

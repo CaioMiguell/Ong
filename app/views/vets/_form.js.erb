@@ -1,0 +1,125 @@
+<% content_for :js do%>
+$(document).ready(function() {
+    $("form[id='new_vet'] , form[id^='edit_vet_']").formValidation({
+        framework: 'bootstrap',
+        fields:{
+            'vet[name]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor digite um nome.'
+                    },
+                    stringLength: {
+                        max: 128,
+                        message: 'O nome deve conter no máximo 128 caracteres.'
+                    }
+                }
+            },
+            'vet[fone]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Telefone é obrigatório.'
+                    },
+                   phone: {
+                        country: 'countrySelectBox',
+                     message: 'O valor %s não é número de telefone.'
+                   }
+                }
+            },
+            'vet[crv]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um a CRV.'
+                    },
+                    stringLength: {
+                        max: 68,
+                        message: 'O CRV deve conter no máximo 68 caracteres.'
+                    }
+                }
+            }
+            ,
+            'vet[crv]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um a CRV.'
+                    },
+                    stringLength: {
+                        max: 68,
+                        message: 'O CRV deve conter no máximo 68 caracteres.'
+                    }
+                }
+            }
+            ,
+            'vet[address_attributes][street]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um a Rua.'
+                    }
+                }
+            } ,
+            'vet[address_attributes][number]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um número.'
+                    }
+                }
+            } ,
+            'vet[address_attributes][city]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha uma cidade.'
+                    }
+                }
+            },
+             'vet[address_attributes][state]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um estado.'
+                    }
+                }
+            },
+             'vet[address_attributes][neighborhood]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha um bairro.'
+                    }
+                }
+            }
+
+        }
+    });
+});
+
+
+function changeZipCode(elem) {
+    if (elem.value) {
+        if (elem.value.length == 8) {
+            $.ajax({
+                type: "GET",
+                url: "<%=Rails.configuration.app_url%>/zip_code/" + elem.value,
+                success: function (data) {
+                    if (data) {
+                        cleanAddress();
+                        $("#vet_address_attributes_street").val(data.address);
+                        $("#vet_address_attributes_complement").val(data.complement);
+                        $("#vet_address_attributes_neighborhood").val(data.neighborhood);
+                        $("#vet_address_attributes_city").val(data.city);
+                        $("#vet_address_attributes_state").val(data.state);
+
+                        $("form[id='new_vet'] , form[id^='edit_vet_']").formValidation('revalidateField', 'vet[address_attributes][street]')
+                            .formValidation('revalidateField', 'vet[address_attributes][city]')
+                            .formValidation('revalidateField', 'vet[address_attributes][state]')
+                            .formValidation('revalidateField', 'vet[address_attributes][neighborhood]');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.info('Erro: '+errorThrown);
+                }
+            });
+        }
+    }
+}
+
+function cleanAddress() {
+    $("#vet_address_attributes_street, #vet_address_attributes_neighborhood, #vet_address_attributes_complement, #vet_address_attributes_city, #vet_address_attributes_state").val("");
+}
+<% end %>

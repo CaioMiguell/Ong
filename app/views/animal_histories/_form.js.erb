@@ -1,0 +1,46 @@
+<% content_for :js do%>
+$(document).ready(function() {
+    $("form[id='new_animal_history'] , form[id^='edit_animal_history_']").formValidation({
+        framework: 'bootstrap',
+        fields:{
+            'animal_history[date_ini]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Data é inicial é obrigatório.'
+                    },
+                    date: {
+                        format: 'DD/MM/YYYY',
+                        message: 'A data não está no valor válido.'
+                    }
+                }
+            },
+            'animal_history[animal_id]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Animal é obrigatório.'
+                    }
+                }
+            },
+            'animal_history[vet_id]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Veterinário é obrigatório.'
+                    }
+                }
+            },
+            'animal_history[note]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Observação é obrigatório.'
+                    },
+                    stringLength: {
+                        max: 68,
+                        message: 'Observação deve conter no máximo 68 caracteres.'
+                    }
+                }
+            }
+        }
+    });
+
+});
+<% end %>

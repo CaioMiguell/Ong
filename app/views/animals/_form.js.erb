@@ -1,0 +1,67 @@
+<% content_for :js do%>
+$(document).ready(function() {
+    $("form[id='new_animal'] , form[id^='edit_animal_']").formValidation({
+        framework: 'bootstrap',
+        fields:{
+            'animal[name]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor digite um nome.'
+                    },
+                    stringLength: {
+                        max: 128,
+                        message: 'Nome deve conter no máximo 128 caracteres.'
+                    }
+                }
+            },
+            'animal[image]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor, selecione uma imagem.'
+                    },
+                    file: {
+                        extension: 'jpg,png',
+                        type: 'image/jpeg,image/png',
+                        maxSize: 2097152,   // 2048 * 1024
+                        message: 'Escolha um arquivo no formato png ou jpg no maximo 2 Mb'
+                    }
+                }
+            },
+            'animal[species]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha uma espécie.'
+                    },
+                    stringLength: {
+                        max: 128,
+                        message: 'Espécie deve conter no máximo 128 caracteres.'
+                    }
+                }
+            },
+            'animal[breed]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha uma raça.'
+                    },
+                    stringLength: {
+                        max: 68,
+                        message: 'Raça deve conter no máximo 68 caracteres.'
+                    }
+                }
+            },
+             'animal[note]': {
+                validators: {
+                    notEmpty:{
+                        message: 'Por favor preencha uma observação.'
+                    },
+                    stringLength: {
+                        max: 128,
+                        message: 'Observação deve conter no máximo 128 caracteres.'
+                    }
+                }
+            }
+        }
+    });
+
+});
+<% end %>

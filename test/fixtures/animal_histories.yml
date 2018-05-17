@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dateIni: 2018-03-29
+  animal: one
+  vet: one
+  note: MyString
+
+two:
+  dateIni: 2018-03-29
+  animal: two
+  vet: two
+  note: MyString

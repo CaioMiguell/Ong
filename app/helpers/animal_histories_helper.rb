@@ -1,0 +1,2 @@
+module AnimalHistoriesHelper
+end

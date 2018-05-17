@@ -1,0 +1,47 @@
+<% content_for :js do%>
+$(document).ready(function() {
+    $("form[id='new_user'] , form[id^='edit_user_']").formValidation({
+        framework: 'bootstrap',
+        fields:{
+            'user[email]': {
+                validators: {
+                    notEmpty: {
+                        message: 'O email é obrigatório.'
+                    },
+                    stringLength: {
+                        max: 256,
+                        message: 'O email deve conter no máximo 256 caracteres.'
+                    },
+                    regexp: {
+                        regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                        message: 'Email inválido.'
+                    }
+                }
+            },
+            'user[password]': {
+                validators: {
+                    notEmpty: {
+                        message: 'A senha é obrigatória.'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 8,
+                        message: 'A senha deve conter no mínimo 5 caracteres e no máximo 8 caracteres.'
+                    },
+                    callback: {
+                        message: 'A senha deve conter no mínimo 5 caracteres e no máximo 8 caracteres.',
+                        callback: function (value, validator, $field) {
+                            if (value.match(/[a-z]/) || value.match(/[A-Z]/) || value.match(/[0-9]/)) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+});
+<% end %>
